@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pm2 start fermheat.js -- -d fermheat -l 78 -h 80 -i 60 -c

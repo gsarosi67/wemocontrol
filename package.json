@@ -1,0 +1,20 @@
+{
+  "name": "fermheat",
+  "version": "0.0.2",
+  "main": "wemo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "httpdispatcher": "^2.1.2",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "url": "^0.11.0",
+    "util": "^0.12.0",
+    "wemo-client": "^0.15.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <link rel="icon" href="beer.png">
+      <!-- development version, includes helpful console warnings -->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <!-- production version, optimized for size and speed
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+      <script src='fetch.js'></script>
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+      <script type="text/javascript" src="moment.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+      <link rel="stylesheet" type="text/css" href="fermheat.css?ver=1" />
+   </head>
+
+   <body>
+     <div class="view" id="fermheatvue" v-bind:class="{ active: currentState }">
+        <div class='header'>
+            <img src='beerbig.jpg' width='150'>
+            <div class='clock'>{{ currenttime }}</div>
+            <div class='title'>FermHeat</div>
+        </div>
+        </br>
+	<div class=controls>
+	    <div class='temperature'>
+	       <label for='currenttemp'>Current Temperature</label>
+	        {{ currentTemp }}
+	    </div>
+	    <div class='options'>
+	       <label for='hightemp'>High</label>
+	         <input type='number' name='hightemp' v-model='clientOptions.highTemp'>
+	       <label for='lowtemp'>Low</label>
+	         <input type='number' name='lowtemp' v-model='clientOptions.lowTemp'>
+          </br>
+          <label for='interval'>Interval</label>
+	         <input type='number' name='interval' v-model='clientOptions.interval'>
+          <label for='deviceState'>{{ clientOptions.targetDevice }} State</label>
+            <label class="switch" name='deviceState'>
+              <input type="checkbox" v-model='currentState'>
+              <span class="slider round"></span>
+            </label>
+          </br>
+          <div class='distribution'>
+            <label>Chart Dist</label></br>
+              <label for='series'>series</label>
+                <input type=radio id='series' value='series' v-model='chartDistribution'></br>
+              <label for='linear'>linear</label>
+                <input type=radio id='linear' value='linear' v-model='chartDistribution'>
+              <label for='duration'>Duration</label>
+                <input type='number' name='duration' v-model='chartDuration'>
+          </div>
+	    </div>
+	 </div>
+         <div class='temphistorygraph'>
+             <canvas id='temphistory'></canvas>
+         </div>
+    </div>
+		<div id='debug' class='debug'></div>
+   </body>
+   <script type='text/javascript' src='ui.js?ver=1'></script>
+<html>
